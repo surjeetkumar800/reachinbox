@@ -4,10 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const app_1 = __importDefault(require("./app"));
 const db_1 = require("./config/db");
 require("./config/redis");
-dotenv_1.default.config();
+// 🔥 START EMAIL WORKER (FREE SOLUTION)
+require("./queues/email.worker");
 const PORT = process.env.PORT || 5000;
 const startServer = async () => {
     try {

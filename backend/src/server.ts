@@ -1,9 +1,12 @@
 import dotenv from "dotenv";
+dotenv.config();
+
 import app from "./app";
 import { connectDB } from "./config/db";
 import "./config/redis";
 
-dotenv.config();
+// 🔥 START EMAIL WORKER (FREE SOLUTION)
+import "./queues/email.worker";
 
 const PORT = process.env.PORT || 5000;
 
