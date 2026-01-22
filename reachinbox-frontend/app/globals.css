@@ -1,0 +1,1047 @@
+@import "tailwindcss";
+
+/* === Self-Hosted Figtree Font === */
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Light theme colors - Blue and Orange Finance Palette */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+
+  /* Primary: Professional Blue */
+  --primary: #0e499c;
+  --primary-foreground: #ffffff;
+  --primary-hover: #04224b;
+  --primary-light: #f2f7ff;
+
+  /* Accent: Energetic Orange (for buttons and highlights) */
+  --accent: #ff914d;
+  --accent-foreground: #ffffff;
+  --accent-hover: #ea580c;
+  --accent-light: #fff9f2;
+
+  /* Neutral Colors */
+  --secondary: #f8fafc;
+  --secondary-foreground: #334155;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #e2e8f0;
+  --input: #0e489b;
+  --ring: #0e489b;
+  --radius: 0.75rem;
+
+  /* Status Colors */
+  --success: #059669;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --info: #0ea5e9;
+  --info-foreground: #ffffff;
+
+  /* Section Layout Variables (from your other project) */
+  --section-width: 85%;
+  --section-width-mobile: 90%;
+  --font-primary: "Figtree", sans-serif;
+  --font-weight-bold: 700;
+  --font-weight-normal: 400;
+  --title-padding: 0.5rem 0;
+  --paragraph-padding: 0.5rem 0;
+  --paragraph-line-height: 1.6;
+  --font-size-h1: 3.5rem;
+  --font-size-h2: 3rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h4: 1.1rem;
+  --font-size-h5: 15px;
+  --font-size-h6: 1rem;
+  --font-size-paragraph: 1rem;
+  --font-size-title: 2rem;
+  --font-size-label: 14px;
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --font-size-title: clamp(2rem, 10vw, 2.5rem);
+    --font-size-h1: clamp(3.5rem, 10vw, 4rem);
+    --font-size-h2: clamp(1.75rem, 30vw, 3rem);
+    --font-size-h3: clamp(1.2rem, 10vw, 2rem);
+    --font-size-h4: clamp(1.1rem, 10vw, 1.38rem);
+    --font-size-h5: clamp(1rem, 9vw, 1.2rem);
+    --font-size-paragraph: clamp(1.15rem, 10vw, 1.28rem);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-light: var(--accent-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  border-color: var(--border);
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Enhanced scrollbar */
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+/* Section Structure (from your other project) */
+section {
+  width: var(--section-width);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section-width {
+  width: var(--section-width);
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 0px 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  section {
+    width: var(--section-width-mobile);
+  }
+
+  .section-width {
+    width: var(--section-width-mobile);
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  section {
+    max-width: 1500px;
+  }
+
+  .section-width {
+    max-width: 1500px;
+  }
+}
+
+.section-heading {
+  width: 100%;
+  /* padding-bottom: 6px; */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading-twoLiner {
+  width: 100%;
+  padding-bottom: 2px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Typography (using your variables) */
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4 {
+  font-size: var(--font-size-h4);
+}
+
+h5 {
+  font-size: var(--font-size-h5);
+}
+
+h6 {
+  font-size: var(--font-size-h6);
+  font-weight: var(--font-weight-bold);
+  line-height: 22px;
+  color: var(--foreground);
+}
+
+p {
+  font-size: var(--font-size-paragraph);
+  line-height: var(--paragraph-line-height);
+}
+
+label {
+  font-size: var(--font-size-label);
+  color: var(--foreground);
+}
+
+/* Button styles - Orange primary, blue secondary */
+.btn-primary {
+  background: var(--accent); /* Orange */
+  color: var(--accent-foreground);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.25);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(249, 115, 22, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--background);
+  color: var(--primary); /* Blue text */
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-light);
+  border-color: var(--primary-hover);
+  color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent); /* Orange text */
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.875rem 1.75rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  transform: translateY(-1px);
+}
+
+/* Card styles */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 1.5);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
+  border-color: var(--accent);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0px;
+  background: var(--primary); /* Blue accent line */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Finance-specific components */
+.loan-card {
+  position: relative;
+  padding: 2rem;
+  background: var(--card);
+  border-radius: calc(var(--radius) * 1.5);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.loan-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--primary); /* Blue accent line */
+  border-radius: calc(var(--radius) * 1.5) calc(var(--radius) * 1.5) 0 0;
+}
+
+.loan-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.15);
+  border-color: var(--primary-light);
+}
+
+.rate-badge {
+  background: var(--accent); /* Orange background */
+  color: var(--accent-foreground);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: 0 2px 4px -1px rgba(249, 115, 22, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rate-badge.success {
+  background: var(--success);
+  color: var(--success-foreground);
+  box-shadow: 0 2px 4px -1px rgba(5, 150, 105, 0.25);
+}
+
+.amount-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary); /* Blue amount text */
+}
+
+/* Input styles */
+.input {
+  background: var(--primary);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  color: var(--foreground);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus styles */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  border-color: var(--ring);
+}
+
+/* Hero section styles */
+.hero-title {
+  font-size: var(--font-size-h1);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--primary); /* Blue hero title */
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-h3);
+  color: var(--accent); /* Orange subtitle */
+  font-weight: 600;
+}
+
+/* Badge styles */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.badge-primary {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.badge-accent {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.badge-success {
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--success);
+}
+
+/* Alert styles */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  border-left: 4px solid;
+  margin: 1rem 0;
+}
+
+.alert-success {
+  background: rgba(5, 150, 105, 0.1);
+  border-left-color: var(--success);
+  color: var(--success);
+}
+
+.alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-left-color: var(--warning);
+  color: var(--warning);
+}
+
+.alert-error {
+  background: rgba(220, 38, 38, 0.1);
+  border-left-color: var(--destructive);
+  color: var(--destructive);
+}
+
+.alert-info {
+  background: rgba(30, 64, 175, 0.1);
+  border-left-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .amount-text {
+    font-size: 1.25rem;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-outline {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .loan-card {
+    padding: 1.5rem;
+  }
+}
+/* ✅ Utility to hide scrollbar everywhere */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+#section-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scroll-x 25s linear infinite;
+  position: relative;
+}
+
+.scroll-track::after {
+  content: attr(data-content);
+  position: absolute;
+  left: 100%;
+  display: flex;
+  gap: 2rem;
+  animation: scroll-x 25s linear infinite;
+}
+
+/* Animation */
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================= */
+/* Credit Score Gauge – Global */
+/* ============================= */
+
+.credit-gauge-wrapper {
+  height: 180px; /* pehle zyada thi, ab compact */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .credit-gauge-wrapper {
+    height: 200px;
+  }
+}
+/* Gauge min / max labels positioning */
+.gauge-min-label,
+.gauge-max-label {
+  transform: translateY(8px); /* niche shift */
+  font-size: 12px;
+  fill: var(--muted-foreground);
+}
+
+@media (min-width: 640px) {
+  .gauge-min-label,
+  .gauge-max-label {
+    transform: translateY(10px);
+    font-size: 13px;
+  }
+}
+/* ============================= */
+/* Credit Gauge – Final Polish */
+/* ============================= */
+
+.credit-gauge-wrapper {
+  width: 100%;
+  max-width: 250px;
+  height: 165px; /* aur compact */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG thoda aur tight */
+.credit-gauge-svg {
+  transform: scale(0.88);
+}
+
+/* 300 / 900 labels */
+.gauge-min-label,
+.gauge-max-label {
+  transform: translateY(18px); /* clearly niche */
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+}
+
+@media (min-width: 640px) {
+  .credit-gauge-wrapper {
+    height: 180px;
+  }
+
+  .gauge-min-label,
+  .gauge-max-label {
+    transform: translateY(20px);
+    font-size: 13px;
+  }
+}
+
+/* ============================= */
+/* Icon Wrapper System */
+/* ============================= */
+
+.icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Blue */
+.icon-blue {
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+}
+
+/* Green */
+.icon-green {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+}
+
+/* Orange */
+.icon-orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+}
+
+/* Yellow */
+.icon-yellow {
+  background: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+}
+
+/* Red */
+.icon-red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+/* Icon color system */
+.icon-blue {
+  background-color: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
+}
+
+.icon-green {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+}
+
+.icon-orange {
+  background-color: rgba(249, 115, 22, 0.12);
+  color: #f97316;
+}
+
+.icon-yellow {
+  background-color: rgba(234, 179, 8, 0.12);
+  color: #eab308;
+}
+
+/* ============================= */
+/* Legal Pages Styling System */
+/* Terms, Privacy, Refund etc. */
+/* ============================= */
+
+.legal-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.legal-header {
+  margin-bottom: 32px;
+}
+
+.legal-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 6px;
+}
+
+.legal-updated {
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+}
+
+/* Card wrapper */
+.legal-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+  padding: 28px;
+}
+
+/* Card header */
+.legal-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 24px;
+}
+
+/* Sections */
+.legal-section {
+  margin-bottom: 36px;
+}
+
+.legal-section:last-child {
+  margin-bottom: 0;
+}
+
+.legal-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 8px;
+}
+
+/* Paragraph text */
+.legal-text {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* Lists */
+.legal-list {
+  margin-top: 8px;
+  padding-left: 18px;
+}
+
+.legal-list li {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin-bottom: 6px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .legal-container {
+    padding: 32px 14px;
+  }
+
+  .legal-title {
+    font-size: 1.75rem;
+  }
+
+  .legal-card {
+    padding: 22px;
+  }
+}
+
+.badge-danger {
+  background: rgba(220, 38, 38, 0.12);
+  color: var(--destructive);
+}
+
+.badge-draft {
+  background: rgba(100, 116, 139, 0.12); /* slate */
+  color: var(--muted-foreground);
+}
+/* Compact credit gauge for dashboard */
+.credit-gauge-wrapper {
+  height: 150px;
+}
+
+@media (min-width: 1024px) {
+  .credit-gauge-wrapper {
+    height: 140px;
+  }
+}
+
+@import "tailwindcss";
+
+/* Fonts */
+@font-face {
+  font-family: "Figtree";
+  src: url("/fonts/Figtree-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* variables */
+:root {
+  --primary: #0e499c;
+  --accent: #ff914d;
+  --border: #e2e8f0;
+  --radius: 0.75rem;
+}
+
+/* avatar fallback global */
+.avatar-fallback {
+  background: var(--primary);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bg-gradient-sidebar {
+  background:
+    radial-gradient(
+      900px 600px at 0% 0%,
+      rgba(56, 189, 248, 0.18),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #0e1628 0%, #0a0f1d 100%);
+}
+.sidebar-item {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm
+         text-slate-300
+         transition-all duration-200
+         hover:text-white hover:bg-white/8;
+}
+
+.sidebar-item.active {
+  @apply text-primary bg-white/8;
+}
+
+/* Submenu icon visibility */
+nav a svg {
+  color: rgb(148 163 184); /* slate-400 */
+}
+
+nav a:hover svg {
+  color: white;
+}
+/* Sidebar footer user text */
+.sidebar-user-text {
+  min-width: 0;
+  line-height: 1.1;
+}
+
+/* Primary user name */
+.sidebar-user-name {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Secondary role */
+.sidebar-user-role {
+  margin-top: 2px;
+  font-size: 0.75rem; /* text-xs */
+  color: rgb(148 163 184); /* slate-400 */
+}
+/* Sidebar footer user text wrapper */
+.sidebar-user-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+/* ============================= */
+/* KPI Card – Global Style */
+/* ============================= */
+
+.kpi-card {
+  border-radius: 1rem;
+  background: var(--card);
+  border: 2px solid rgba(16, 185, 129, 0.35); /* emerald border */
+  box-shadow:
+    0 10px 25px rgba(16, 185, 129, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  transition: all 0.35s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 20px 40px rgba(16, 185, 129, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+:root {
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --border-soft: #e5e7eb;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  --primary: #2563eb;
+  --success: #16a34a;
+  --warning: #f59e0b;
+  --destructive: #dc2626;
+
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --radius-sm: 8px;
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+/* ---------------- RISK BADGES ---------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* PRIME */
+.badge-prime {
+  background-color: #e7f7ee;
+  color: #15803d;
+}
+
+/* NEAR PRIME (alag color) */
+.badge-near-prime {
+  background-color: #fff4e5;
+  color: #b45309;
+}
+
+/* SUB PRIME */
+.badge-sub-prime {
+  background-color: #ffe8e8;
+  color: #b91c1c;
+}
+
+/* HIGH RISK */
+.badge-high-risk {
+  background-color: #fde2e2;
+  color: #7f1d1d;
+}
+
+/* ============================= */
+/* Flat KPI hover (Loan Apps style) */
+/* ============================= */
+
+.kpi-flat {
+  border: 1.5px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+}
+
+.kpi-flat:hover {
+  border-color: var(--accent);
+}
+
+/* override fancy effects */
+.kpi-flat:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+
