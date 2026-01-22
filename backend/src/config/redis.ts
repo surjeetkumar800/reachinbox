@@ -1,38 +1,41 @@
-import { Redis } from "ioredis";
-import { env } from "./env";
+import Redis from "ioredis";
 
-const redis = new Redis({
-  host: env.REDIS_HOST,
-  port: env.REDIS_PORT,
-  password: process.env.REDIS_PASSWORD || undefined,
-  maxRetriesPerRequest: null,
-  enableReadyCheck: true,
-});
+let redis: Redis | null = null;
 
-// Successful connection
-redis.on("connect", () => {
-  console.log("✅ Redis connected successfully");
-});
+if (process.env.REDIS_HOST) {
+  redis = new Redis({
+    host: process.env.REDIS_HOST,
+    port: Number(process.env.REDIS_PORT),
+    password: process.env.REDIS_PASSWORD || undefined,
 
-// Redis is ready to accept commands
-redis.on("ready", () => {
-  console.log("🟢 Redis is ready");
-});
+    // Required for free cloud Redis like Upstash
+    tls: process.env.NODE_ENV === "production" ? {} : undefined,
 
-// Connection errors
-redis.on("error", (error: Error) => {
-  console.error("❌ Redis connection error");
-  console.error("Reason:", error.message);
-});
+    maxRetriesPerRequest: 3,
+    enableReadyCheck: true,
+    retryStrategy(times) {
+      if (times > 5) return null; // stop retrying
+      return Math.min(times * 200, 2000);
+    },
+  });
 
-// Reconnecting logs (useful in production)
-redis.on("reconnecting", () => {
-  console.warn("⚠️ Redis reconnecting...");
-});
+  redis.on("connect", () => {
+    console.log("✅ Redis connected");
+  });
 
-// Connection closed
-redis.on("end", () => {
-  console.warn("🔴 Redis connection closed");
-});
+  redis.on("ready", () => {
+    console.log("🟢 Redis ready");
+  });
+
+  redis.on("error", (err) => {
+    console.error("❌ Redis error:", err.message);
+  });
+
+  redis.on("end", () => {
+    console.warn("🔴 Redis connection closed");
+  });
+} else {
+  console.warn("⚠️ Redis disabled (REDIS_HOST not set)");
+}
 
 export { redis };
